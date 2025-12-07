@@ -21,6 +21,8 @@ import {
   Database,
   Building,
   Server,
+  Menu,
+  X,
   Star,
   FileCheck,
   Activity,
@@ -31,46 +33,99 @@ import {
 import HeroSection from "@/components/HeroSection";
 import Serving from "@/components/Serving";
 export default function Home() {
-  const Navbar = () => (
-    <nav className="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo + Company Name */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-red-400 to-red-600 rounded-lg flex items-center justify-center">
-              <Stethoscope className="text-white w-8 h-8 md:w-8 md:h-8" />
-            </div>
-            <span className="text-2xl font-bold text-gray-900">
-              Keen Claim <span className="text-red-600">LLC</span>
-            </span>
-          </div>
+  const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex space-x-8">
-            {["ABOUT", "WHY CHOOSE US", "OUR SERVICES", "CONTACT US"].map(
-              (item) => (
+    const navItems = ["ABOUT", "WHY CHOOSE US", "OUR SERVICES", "CONTACT US"];
+
+    return (
+      <nav className="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo + Company Name */}
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-red-400 to-red-600 rounded-lg flex items-center justify-center">
+                <Stethoscope className="text-white w-6 h-6 md:w-8 md:h-8" />
+              </div>
+              <span className="text-xl md:text-2xl font-bold text-gray-900">
+                Keen Claim <span className="text-red-600">LLC</span>
+              </span>
+            </div>
+
+            {/* Desktop Navigation Links - Centered */}
+            <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 space-x-8">
+              {navItems.map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="text-gray-700 hover:text-red-600 font-semibold transition-colors"
+                  className="text-gray-700 hover:text-red-600 font-semibold transition-colors duration-200 whitespace-nowrap"
                 >
                   {item}
                 </a>
-              )
-            )}
+              ))}
+            </div>
+
+            {/* Spacer for mobile/tablet, visible content for desktop */}
+            <div className="hidden lg:block w-48">
+              {" "}
+              {/* Adjust width as needed for balance */}
+              {/* This empty div balances the layout */}
+            </div>
+
+            {/* Mobile Hamburger Menu - Hidden on lg screens */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6 text-gray-700" />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-700" />
+              )}
+            </button>
           </div>
 
-          {/* Phone CTA */}
-          <a
-            href="tel:4433330041"
-            className="bg-gradient-to-r from-red-600 to-blue-600 text-white px-6 py-2 rounded-full font-semibold"
+          {/* Mobile Menu Dropdown */}
+          <div
+            className={`
+            lg:hidden
+            overflow-hidden
+            transition-all duration-300 ease-in-out
+            ${isMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"}
+          `}
           >
-            443-333-0041
-          </a>
+            <div className="pt-4 pb-6 space-y-4">
+              {navItems.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="
+                  block
+                  py-3
+                  px-4
+                  text-gray-700
+                  hover:text-red-600
+                  hover:bg-red-50
+                  rounded-lg
+                  font-semibold
+                  transition-all
+                  duration-200
+                  transform
+                  hover:translate-x-2
+                "
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
-  );
+      </nav>
+    );
+  };
+
   const AboutSection = () => (
     <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -328,14 +383,7 @@ export default function Home() {
         fullDescription:
           "Our dedicated analytics and reporting team analyzes trends and ensures implementation of a pre-defined reporting and transparency matrix depicting real-time status of our clients' practice performance and financial health.",
       },
-      {
-        name: "FREE-STANDING ER",
-        icon: <Building className="text-rose-600" size={28} />,
-        shortDescription:
-          "Specialized solutions for Free-Standing Emergency Rooms.",
-        fullDescription:
-          "We have a track record with the best possible approach and solutions for Free-Standing Emergency Rooms / Micro-Hospitals with revenue outcomes they may have never expected, handling unique billing challenges specific to emergency care.",
-      },
+
       {
         name: "IT SERVICES",
         icon: <Server className="text-gray-600" size={28} />,
