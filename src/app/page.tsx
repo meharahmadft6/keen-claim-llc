@@ -475,7 +475,7 @@ export default function Home() {
                 </h4>
               </div>
               <p className="text-gray-600 text-sm md:text-base">
-                Track record of recovering 100M+ in revenue for healthcare
+                Track record of recovering 100K+ in revenue for healthcare
                 providers nationwide
               </p>
             </div>
