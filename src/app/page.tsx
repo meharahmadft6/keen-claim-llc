@@ -28,6 +28,11 @@ import {
   Activity,
   UserCheck,
   AlertCircle,
+  Target,
+  Zap,
+  LineChart,
+  CheckCircle,
+  Award,
   TrendingUp,
 } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
@@ -212,73 +217,321 @@ export default function Home() {
   );
 
   const WhyChooseUs = () => (
-    <section id="why-choose-us" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Why <span className="text-red-600">Keen Claim LLC</span>
+    <section
+      id="why-choose-us"
+      className="py-12 md:py-20 bg-gradient-to-b from-white to-gray-50"
+    >
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 md:mb-16">
+          <span className="inline-block px-4 py-2 bg-gradient-to-r from-red-50 to-blue-50 text-red-600 font-semibold rounded-full mb-4 border border-red-100 text-sm md:text-base">
+            Proven Revenue Growth Partners
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
+            Why Choose{" "}
+            <span className="bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
+              Keen Claim LLC
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover what makes us the preferred choice for healthcare providers
-            nationwide
+          <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-red-600 to-blue-600 mx-auto mb-4 md:mb-6"></div>
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl md:max-w-4xl mx-auto px-4">
+            We deliver measurable financial results through advanced RCM
+            solutions that transform your revenue cycle
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <Clock className="text-blue-600" size={24} />
+        {/* Main Value Propositions */}
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
+            {/* 1. Increased Revenue */}
+            <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="flex items-start space-x-4 mb-6">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                  <DollarSign className="text-emerald-600 w-6 h-6 md:w-7 md:h-7" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  24/7 Operational Support
-                </h3>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                    Increased Revenue
+                  </h3>
+                  <p className="text-gray-600 text-sm md:text-base">
+                    Transform your collections with our proven revenue
+                    acceleration strategies
+                  </p>
+                </div>
               </div>
-              <p className="text-gray-600">
-                With our unique hybrid operations structure, we provide
-                round-the-clock support ensuring every claim receives adequate
-                reimbursement and reporting while delivering matchless patient
-                services.
+
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
+                    <TrendingUp className="text-emerald-600 w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm md:text-base">
+                      Average 40% Revenue Increase
+                    </p>
+                    <p className="text-gray-500 text-xs md:text-sm">
+                      Within first 6 months of partnership
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
+                    <CheckCircle className="text-emerald-600 w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm md:text-base">
+                      99% Claims Accuracy Rate
+                    </p>
+                    <p className="text-gray-500 text-xs md:text-sm">
+                      Maximizing first-pass approval
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-emerald-50 p-3 md:p-4 rounded-lg">
+                  <div className="flex justify-between items-center">
+                    <span className="text-emerald-800 text-sm md:text-base font-semibold">
+                      Improved Collections
+                    </span>
+                    <span className="text-lg md:text-xl font-bold text-emerald-700">
+                      ↑ 68.5%
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. Reduced AR Days */}
+            <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="flex items-start space-x-4 mb-6">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                  <CreditCard className="text-blue-600 w-6 h-6 md:w-7 md:h-7" />
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                    Reduced AR Days
+                  </h3>
+                  <p className="text-gray-600 text-sm md:text-base">
+                    Accelerate cash flow with focused AR management
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <Target className="text-blue-600 w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm md:text-base">
+                      Denials Reduced by 95%
+                    </p>
+                    <p className="text-gray-500 text-xs md:text-sm">
+                      From 22% to less than 3%
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <LineChart className="text-blue-600 w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm md:text-base">
+                      Faster Claim Processing
+                    </p>
+                    <p className="text-gray-500 text-xs md:text-sm">
+                      Average 15-day reduction in payment cycles
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-3 md:p-4 rounded-lg">
+                  <div className="text-center">
+                    <div className="text-lg md:text-xl font-bold text-blue-800">
+                      Improved Cash Flow
+                    </div>
+                    <div className="text-blue-600 text-sm md:text-base mt-1">
+                      Focus on unpaid claims resolution
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. Complete RCM Solutions */}
+            <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="flex items-start space-x-4 mb-6">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-purple-100 to-purple-50 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                  <Award className="text-purple-600 w-6 h-6 md:w-7 md:h-7" />
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                    Complete RCM Solutions
+                  </h3>
+                  <p className="text-gray-600 text-sm md:text-base">
+                    End-to-end solutions at market competitive rates
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <Users className="text-purple-600 w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm md:text-base">
+                      Hybrid Operations Model
+                    </p>
+                    <p className="text-gray-500 text-xs md:text-sm">
+                      Cost-effective without compromising quality
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <Shield className="text-purple-600 w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm md:text-base">
+                      HIPAA Compliant Security
+                    </p>
+                    <p className="text-gray-500 text-xs md:text-sm">
+                      Enterprise-grade data protection
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-purple-50 p-3 md:p-4 rounded-lg">
+                  <div className="text-center">
+                    <div className="text-lg md:text-xl font-bold text-purple-800">
+                      Competitive Pricing
+                    </div>
+                    <div className="text-purple-600 text-sm md:text-base mt-1">
+                      Transparent, value-based pricing structure
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Supporting Capabilities */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
+            <div className="bg-white p-4 md:p-6 rounded-xl shadow-md border border-gray-100">
+              <div className="flex items-center space-x-3 md:space-x-4 mb-3">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-orange-100 to-orange-50 rounded-lg flex items-center justify-center">
+                  <Clock className="text-orange-600 w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                <h4 className="text-base md:text-lg font-bold text-gray-900">
+                  24/7 Support
+                </h4>
+              </div>
+              <p className="text-gray-600 text-sm md:text-base">
+                Round-the-clock operational support for continuous revenue cycle
+                management
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                  <Shield className="text-red-600" size={24} />
+            <div className="bg-white p-4 md:p-6 rounded-xl shadow-md border border-gray-100">
+              <div className="flex items-center space-x-3 md:space-x-4 mb-3">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-cyan-100 to-cyan-50 rounded-lg flex items-center justify-center">
+                  <BarChart3 className="text-cyan-600 w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  HIPAA Compliant Security
-                </h3>
+                <h4 className="text-base md:text-lg font-bold text-gray-900">
+                  Real-time Analytics
+                </h4>
               </div>
-              <p className="text-gray-600">
-                We are committed to protecting critical healthcare data with
-                encrypted IPSEC VPN connections and advanced FIREWALL
-                implementations, ensuring your valuable data is secure and
-                protected from intrusions.
+              <p className="text-gray-600 text-sm md:text-base">
+                Comprehensive dashboards with actionable insights for revenue
+                optimization
+              </p>
+            </div>
+
+            <div className="bg-white p-4 md:p-6 rounded-xl shadow-md border border-gray-100">
+              <div className="flex items-center space-x-3 md:space-x-4 mb-3">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-green-100 to-green-50 rounded-lg flex items-center justify-center">
+                  <Zap className="text-green-600 w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                <h4 className="text-base md:text-lg font-bold text-gray-900">
+                  Fast Implementation
+                </h4>
+              </div>
+              <p className="text-gray-600 text-sm md:text-base">
+                Seamless integration within 30 days, minimal disruption to your
+                operations
+              </p>
+            </div>
+
+            <div className="bg-white p-4 md:p-6 rounded-xl shadow-md border border-gray-100">
+              <div className="flex items-center space-x-3 md:space-x-4 mb-3">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-red-100 to-red-50 rounded-lg flex items-center justify-center">
+                  <CheckCircle className="text-red-600 w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                <h4 className="text-base md:text-lg font-bold text-gray-900">
+                  Proven Results
+                </h4>
+              </div>
+              <p className="text-gray-600 text-sm md:text-base">
+                Track record of recovering 100M+ in revenue for healthcare
+                providers nationwide
               </p>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-600 to-red-600 rounded-2xl p-8 text-white">
-            <div className="max-w-4xl mx-auto text-center">
-              <h3 className="text-3xl font-bold mb-6">
-                Deep Healthcare Industry Roots
-              </h3>
-              <p className="text-lg mb-6">
-                Keen Claim LLC has deep roots in the healthcare industry with
-                experience in managing and operating profitable healthcare
-                ventures while giving back to the community. We integrate the
-                best possible framework to ensure matchless collections and
-                hassle-free operations.
-              </p>
-              <p className="text-2xl font-bold">
-                For best results, you want{" "}
-                <span className="text-yellow-300">Keen Claim LLC</span> by your
-                side.
-              </p>
+          {/* Industry Expertise Banner */}
+          <div className="bg-gradient-to-r from-blue-600 to-red-600 rounded-2xl p-6 md:p-8 lg:p-10 text-white">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center md:text-left md:flex md:items-center md:justify-between md:space-x-8">
+                <div className="mb-6 md:mb-0 md:flex-1">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">
+                    Deep Healthcare Industry Expertise
+                  </h3>
+                  <p className="text-base md:text-lg opacity-90">
+                    With roots in healthcare management and operations, we
+                    understand the unique challenges providers face. Our
+                    comprehensive framework delivers matchless collections while
+                    maintaining exceptional patient care standards.
+                  </p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 text-center md:text-right md:flex-shrink-0">
+                  <p className="text-lg md:text-xl font-bold mb-2">
+                    For Maximum Revenue Recovery
+                  </p>
+                  <p className="text-2xl md:text-3xl font-bold text-yellow-300">
+                    Choose Keen Claim LLC
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-8 md:mt-10 pt-6 md:pt-8 border-t border-white/20">
+                <div className="text-center">
+                  <div className="text-2xl md:text-3xl font-bold">40%+</div>
+                  <div className="text-sm md:text-base opacity-90">
+                    Revenue Increase
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl md:text-3xl font-bold">95%</div>
+                  <div className="text-sm md:text-base opacity-90">
+                    Denials Reduction
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl md:text-3xl font-bold">24/7</div>
+                  <div className="text-sm md:text-base opacity-90">
+                    Operations
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl md:text-3xl font-bold">100%</div>
+                  <div className="text-sm md:text-base opacity-90">
+                    HIPAA Compliant
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

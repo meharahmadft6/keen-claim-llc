@@ -65,16 +65,6 @@ const HeroSection = () => {
 
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-red-600/10" />
-
-                  {/* American flag corner badge */}
-                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/95 backdrop-blur-sm rounded-lg p-1.5 sm:p-2 shadow-lg">
-                    <div className="flex items-center gap-1.5 sm:gap-2">
-                      <div className="w-6 h-4 sm:w-8 sm:h-5 bg-gradient-to-r from-red-500 via-white to-blue-600 rounded shadow"></div>
-                      <span className="text-xs font-bold text-gray-800">
-                        USA
-                      </span>
-                    </div>
-                  </div>
                 </div>
               ))}
             </div>
