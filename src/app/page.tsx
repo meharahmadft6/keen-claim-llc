@@ -641,7 +641,7 @@ export default function Home() {
       {
         name: "REPORTING",
         icon: <BarChart3 className="text-indigo-600" size={28} />,
-        image: "/Reporting.jpg",
+        image: "/Reporting and analytics.jpg",
         shortDescription:
           "Real-time analytics and reporting for practice transparency.",
         fullDescription:
@@ -659,7 +659,7 @@ export default function Home() {
       {
         name: "SPECIAL SERVICES",
         icon: <Star className="text-amber-600" size={28} />,
-        image: "/Special Services.jpg",
+        image: "/Special Services-2.jpg",
         shortDescription:
           "Comprehensive services including Marketing, HR, and Payroll.",
         fullDescription:
