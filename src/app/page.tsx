@@ -2,6 +2,8 @@
 "use client";
 
 import { useState } from "react";
+
+import Image from "next/image";
 import {
   ChevronDown,
   Phone,
@@ -542,6 +544,7 @@ export default function Home() {
   interface Service {
     name: string;
     icon: React.ReactNode;
+    image: string;
     shortDescription: string;
     fullDescription: string;
   }
@@ -551,7 +554,6 @@ export default function Home() {
   }
 
   const ServicesSection = () => {
-    // State for each service's "show more" toggle with proper typing
     const [expandedServices, setExpandedServices] = useState<ExpandedServices>(
       {}
     );
@@ -567,6 +569,7 @@ export default function Home() {
       {
         name: "CREDENTIALING",
         icon: <UserCheck className="text-blue-600" size={28} />,
+        image: "/Credentialing.jpg",
         shortDescription:
           "Complex credentialing process handled by experienced specialists for seamless workflow.",
         fullDescription:
@@ -575,6 +578,7 @@ export default function Home() {
       {
         name: "Coding",
         icon: <FileCheck className="text-green-600" size={28} />,
+        image: "/Coding.jpg",
         shortDescription:
           "Certified Professional Coders ensure accurate and compliant coding practices.",
         fullDescription:
@@ -583,6 +587,7 @@ export default function Home() {
       {
         name: "CHARGE ENTRY",
         icon: <CreditCard className="text-purple-600" size={28} />,
+        image: "/CHARGE ENTRY.jpg",
         shortDescription:
           "Meticulous charge entry to maintain the integrity of your billing cycle.",
         fullDescription:
@@ -591,6 +596,7 @@ export default function Home() {
       {
         name: "CLAIMS SCRUBBING",
         icon: <ClipboardCheck className="text-red-600" size={28} />,
+        image: "/Claim scrubbing.jpg",
         shortDescription:
           "Expert examination of each claim for errors prior to submission.",
         fullDescription:
@@ -599,6 +605,7 @@ export default function Home() {
       {
         name: "AR FOLLOW UP",
         icon: <Activity className="text-orange-600" size={28} />,
+        image: "/AR follow ups.jpg",
         shortDescription:
           "Rigorous follow-up on submitted claims for timely adjudication.",
         fullDescription:
@@ -607,6 +614,7 @@ export default function Home() {
       {
         name: "DENIALS & APPEALS",
         icon: <AlertCircle className="text-yellow-600" size={28} />,
+        image: "/DENIALS & APPEALS.jpg",
         shortDescription:
           "Systematic approach to handle underpaid and denied claims.",
         fullDescription:
@@ -615,6 +623,7 @@ export default function Home() {
       {
         name: "PAYMENT POSTING",
         icon: <DollarSign className="text-emerald-600" size={28} />,
+        image: "/PAYMENT POSTING.jpg",
         shortDescription:
           "Daily review and posting of payments for accurate cash flow tracking.",
         fullDescription:
@@ -623,6 +632,7 @@ export default function Home() {
       {
         name: "PATIENT SERVICES",
         icon: <Users className="text-cyan-600" size={28} />,
+        image: "/PATIENT SERVICES.jpg",
         shortDescription:
           "Designated patient advocates for post-care communication.",
         fullDescription:
@@ -631,15 +641,16 @@ export default function Home() {
       {
         name: "REPORTING",
         icon: <BarChart3 className="text-indigo-600" size={28} />,
+        image: "/Reporting.jpg",
         shortDescription:
           "Real-time analytics and reporting for practice transparency.",
         fullDescription:
           "Our dedicated analytics and reporting team analyzes trends and ensures implementation of a pre-defined reporting and transparency matrix depicting real-time status of our clients' practice performance and financial health.",
       },
-
       {
         name: "IT SERVICES",
         icon: <Server className="text-gray-600" size={28} />,
+        image: "/IT SERVICES.jpeg",
         shortDescription:
           "Secure data management and IT support for healthcare operations.",
         fullDescription:
@@ -648,6 +659,7 @@ export default function Home() {
       {
         name: "SPECIAL SERVICES",
         icon: <Star className="text-amber-600" size={28} />,
+        image: "/Special Services.jpg",
         shortDescription:
           "Comprehensive services including Marketing, HR, and Payroll.",
         fullDescription:
@@ -685,52 +697,76 @@ export default function Home() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-all duration-300 hover:border-blue-200 group"
+                className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 hover:border-blue-200 group"
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-50 to-white rounded-xl flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {service.name}
-                </h3>
-                <p className="text-gray-600 mb-4">{service.shortDescription}</p>
-
-                <button
-                  className="text-blue-600 font-semibold flex items-center space-x-2 hover:text-blue-700 transition-colors"
-                  onClick={() => toggleService(service.name)}
-                >
-                  <span className="text-sm">SHOW MORE</span>
-                  <ChevronDown
-                    size={16}
-                    className={`transition-transform duration-300 ${
-                      expandedServices[service.name] ? "rotate-180" : ""
-                    }`}
+                {/* Image Container */}
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={`${service.name} service`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                </button>
 
-                {expandedServices[service.name] && (
-                  <div className="mt-4 p-4 bg-gradient-to-r from-blue-50 to-white rounded-lg border border-blue-100">
-                    <p className="text-gray-700 mb-3">
-                      {service.fullDescription}
-                    </p>
-                    <div className="flex items-center justify-end">
-                      <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
-                        Keen Claim LLC
-                      </span>
-                    </div>
+                  {/* Icon overlay on image */}
+                  <div className="absolute bottom-4 left-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-lg">
+                    {service.icon}
                   </div>
-                )}
+                </div>
+
+                {/* Content Container */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {service.name}
+                  </h3>
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                    {service.shortDescription}
+                  </p>
+
+                  <button
+                    className="text-blue-600 font-semibold flex items-center space-x-2 hover:text-blue-700 transition-colors w-full justify-between"
+                    onClick={() => toggleService(service.name)}
+                  >
+                    <span className="text-sm font-medium">
+                      {expandedServices[service.name]
+                        ? "SHOW LESS"
+                        : "SHOW MORE"}
+                    </span>
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-300 ${
+                        expandedServices[service.name] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {expandedServices[service.name] && (
+                    <div className="mt-4 p-4 bg-gradient-to-r from-blue-50 to-white rounded-lg border border-blue-100">
+                      <p className="text-gray-700 mb-3 text-sm leading-relaxed">
+                        {service.fullDescription}
+                      </p>
+                      <div className="flex items-center justify-end">
+                        <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                          Keen Claim LLC
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
 
           {/* Footer note */}
           <div className="text-center mt-12 pt-8 border-t border-gray-200">
-            <div className="inline-flex items-center justify-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-full">
+            <div className="inline-flex flex-wrap items-center justify-center gap-3 bg-blue-600 text-white px-6 py-3 rounded-full">
               <Star size={20} />
               <span className="font-bold">Keen Claim LLC</span>
-              <span className="text-blue-100">|</span>
-              <span>Complete Revenue Cycle Management Solutions</span>
+              <span className="text-blue-100 hidden sm:inline">|</span>
+              <span className="text-center sm:text-left">
+                Complete Revenue Cycle Management Solutions
+              </span>
             </div>
           </div>
         </div>
